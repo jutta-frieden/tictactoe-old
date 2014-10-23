@@ -1,0 +1,13 @@
+Rails vs Sinatra (by Roo)
+
+Ruby is the bricks
+
+Rails and Sinatra are the blueprints
+
+Use the blueprint to build the building (faster, more efficiently, like Germans)
+
+Sinatra is a shed, Rails is a 4-storey floor
+
+Spree is another add-on 'blueprint' to make your blueprint an ecommerce mansion. Comes with models, controllers and views as required for an ecommerce website.
+
+Sinatra you only have this one file (app), and a lot of views
