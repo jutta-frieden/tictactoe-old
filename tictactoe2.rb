@@ -5,9 +5,40 @@ $w=false
 
 $a=[0,' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
+
+# Function to draw the board to the terminal
+
+def draw_board
+    puts '||'.insert(0,$a[1]).insert(2,$a[2]).insert(4,$a[3])
+    puts '_ _ _'
+    puts '||'.insert(0,$a[4]).insert(2,$a[5]).insert(4,$a[6])
+    puts '_ _ _'
+    puts '||'.insert(0,$a[7]).insert(2,$a[8]).insert(4,$a[9])
+end
+
+
+class Player
+    attr_accessor :name
+
+    def initialize(name)
+        @name = name
+    end
+
+end
+
+
+
+
+
+
 # Our main function which will run the game
 
 def main
+    puts "Welcome to TicTacToe! Please put the first player's name:"
+    player1 = Player.new(gets.chomp)
+    puts "Thanks, now put the name of the second player:"
+    player2 = Player.new(gets.chomp)
+
     draw_board
     while $w==false && $a.any? {|e| e == ' '}
         player_1_input
@@ -26,17 +57,6 @@ def main
     end
 
 end
-
-# Function to draw the board to the terminal
-
-def draw_board
-    puts '||'.insert(0,$a[1]).insert(2,$a[2]).insert(4,$a[3])
-    puts '_ _ _'
-    puts '||'.insert(0,$a[4]).insert(2,$a[5]).insert(4,$a[6])
-    puts '_ _ _'
-    puts '||'.insert(0,$a[7]).insert(2,$a[8]).insert(4,$a[9])
-end
-
 
 
 

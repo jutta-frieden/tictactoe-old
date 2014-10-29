@@ -1,26 +1,17 @@
-
-
-# Define global variables for the 9 fields we have in TicTacToe and $w for the winner boolean variable
-
-$p1=' '
-$p2=' '
-$p3=' '
-$p4=' '
-$p5=' '
-$p6=' '
-$p7=' '
-$p8=' '
-$p9=' '
+# Define our boolean variable which decides whether or not the game is over yet
 $w=false
 
-# An array which will keep count of our global variables
+# An array which will keep count of nine global variables
 
-$a=[0,$p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9]
+$a=[0,' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
 # Our main function which will run the game
 
-
 def main
+    puts "Hi players, welcome to TicTacToe! You will play against each other. To figure out who starts, let's toss a digital coin. Hit enter as soon as you have picked a side."
+    gets.chomp
+    who_starts
+    puts "Player 1, to mark your entry, enter a number between 1 and 9 (the fields in the board are counted horizontally from top left to bottom right)."
     draw_board
     while $w==false && $a.any? {|e| e == ' '}
         player_1_input
@@ -40,14 +31,24 @@ def main
 
 end
 
+# Function to decide on who starts the game
+
+def who_starts
+    coin = ["Heads", "Tails"]
+    print "#{coin.sample(1).first}"
+    puts " starts the game!"
+    puts " "
+end
+
+
 # Function to draw the board to the terminal
 
 def draw_board
-    puts '||'.insert(0,$p1).insert(2,$p2).insert(4,$p3)
+    puts '||'.insert(0,$a[1]).insert(2,$a[2]).insert(4,$a[3])
     puts '_ _ _'
-    puts '||'.insert(0,$p4).insert(2,$p5).insert(4,$p6)
+    puts '||'.insert(0,$a[4]).insert(2,$a[5]).insert(4,$a[6])
     puts '_ _ _'
-    puts '||'.insert(0,$p7).insert(2,$p8).insert(4,$p9)
+    puts '||'.insert(0,$a[7]).insert(2,$a[8]).insert(4,$a[9])
 end
 
 
@@ -67,29 +68,8 @@ def player_1_input
         end
         input = gets.chomp.to_i
     end
-
-    case input
-    when 1
-        $p1='X'
-    when 2
-        $p2='X'
-    when 3
-        $p3='X'
-    when 4
-        $p4='X'
-    when 5
-        $p5='X'
-    when 6
-        $p6='X'
-    when 7
-        $p7='X'
-    when 8
-        $p8='X'
-    when 9
-        $p9='X'
-    end
-
-    $a=[0,$p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9]
+ 
+    $a[input]='X'
 
     draw_board
 end
@@ -97,7 +77,7 @@ end
 # Check whether player 1 has won
 
 def winner1
-    if [[$p1,$p2,$p3],[$p4,$p5,$p6],[$p7,$p8,$p9],[$p1,$p4,$p7],[$p2,$p5,$p8],[$p3,$p6,$p9],[$p1,$p5,$p9],[$p3,$p5,$p7]].any? { |e| e==['X','X','X']} 
+ if  [$a[1,3], $a[4,3], $a[7,3], [$a[1],$a[4],$a[7]], [$a[2],$a[5],$a[8]], [$a[3],$a[6],$a[9]], [$a[1],$a[5],$a[9]], [$a[3],$a[5],$a[7]]].any? { |e| e==['X','X','X']} 
         puts "Congratulations, player 1 has won!"
         $w=true
     end
@@ -123,28 +103,7 @@ def player_2_input
         input = gets.chomp.to_i
     end
 
-    case input
-    when 1
-        $p1='O'
-    when 2
-        $p2='O'
-    when 3
-        $p3='O'
-    when 4
-        $p4='O'
-    when 5
-        $p5='O'
-    when 6
-        $p6='O'
-    when 7
-        $p7='O'
-    when 8
-        $p8='O'
-    when 9
-        $p9='O'
-    end
-    
-    $a=[0,$p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9]
+    $a[input]='O'
     
     draw_board
 end
@@ -152,7 +111,7 @@ end
 # Check whether player 2 has won
 
 def winner2
-    if  [[$p1,$p2,$p3],[$p4,$p5,$p6],[$p7,$p8,$p9],[$p1,$p4,$p7],[$p2,$p5,$p8],[$p3,$p6,$p9],[$p1,$p5,$p9],[$p3,$p5,$p7]].any? { |e| e==['O','O','O']} 
+    if  [$a[1,3], $a[4,3], $a[7,3], [$a[1],$a[4],$a[7]], [$a[2],$a[5],$a[8]], [$a[3],$a[6],$a[9]], [$a[1],$a[5],$a[9]], [$a[3],$a[5],$a[7]]].any? { |e| e==['O','O','O']} 
         puts "Congratulations, player 2 has won!"
         $w=true   
     end

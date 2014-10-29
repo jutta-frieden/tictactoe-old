@@ -1,13 +1,5 @@
 TicTacToe
 
-We are writing this as a Ruby app from the command line and will push this to our rep on GitHub.
+This app has two versions: tictactoe.rb contains the first version of the game (without classes) and can be played between two players from the terminal.
 
-Sally, Ruby and Jutta
-
---
-
-Validate user input as a new function.
-
-Look into arrays (to accummulate all the pis).
-
-While loops for changing between players.
+In tictactoe2.rb, I am applying classes for players and games. Again, this can be played by two players from the terminal.
